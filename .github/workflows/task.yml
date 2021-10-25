@@ -19,7 +19,7 @@ jobs:
         cmd: install # will run `yarn install` command
     
     - name: Run Task
-      run: node bot.js
+      run: node bot.cjs
       env: 
         DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
 
