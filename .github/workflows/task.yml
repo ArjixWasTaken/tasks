@@ -1,0 +1,25 @@
+name: Run Tasks
+
+# on:
+#   schedule:
+#     - cron: "0 * * * *"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    
+    - uses: actions/setup-node@v2
+      with:
+      node-version: '14'
+    
+    - uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: install # will run `yarn install` command
+    
+    - name: Run Task
+      run: node bot.js
+      env: 
+        DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
+
