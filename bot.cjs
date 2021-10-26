@@ -33,13 +33,13 @@ const config = {
             channel: "664718764587089931",
             command: "//daily",
             enabled: true,
-            interval: 24 * 360,
+            interval: 24 * 3600,
         },
         {
             channel: "664718764587089931",
             command: ";daily",
             enabled: true,
-            interval: 24 * 360,
+            interval: 24 * 3600,
         },
     ],
     /*"815342964716470322": [
