@@ -9,7 +9,7 @@ const sleep = (milliseconds) =>
 
 
 var owner = null
-const alert = async (command) => {
+const alertOwner = async (command) => {
     if (owner == null) {
         owner = client.users.cache.find((user) => user.id == process.env.OWNER_ID);
     }
@@ -81,7 +81,7 @@ const claimDailies = async () => {
                             command.interval
                         ) {
                             await channel.send(command.command);
-                            await alert({serverId, command})
+                            alertOwner({serverId, command})
                             await sleep(1.5 * 1000);
                         } else {
                             console.log(
