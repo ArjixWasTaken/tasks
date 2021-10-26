@@ -13,7 +13,7 @@ const alertOwner = async (command) => {
     if (owner == null) {
         owner = client.users.cache.find((user) => user.id == process.env.OWNER_ID);
     }
-    await owner.send(JSON.stringify(command))
+    await owner.send("```json\n" + JSON.stringify(command, null, 3) + "\n```")
 }
 
 const searchForLastMessage = async (guildId, channelId, command) => {
