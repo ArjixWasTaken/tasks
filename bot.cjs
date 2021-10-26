@@ -8,6 +8,15 @@ const sleep = (milliseconds) =>
     new Promise((resolve) => setTimeout(resolve, milliseconds));
 
 
+var owner = null
+const alert = async (command) => {
+    if (owner == null) {
+        owner = client.users.cache.find((user) => user.id == process.env.OWNER_ID);
+    }
+    await owner.send(JSON.stringify(command))
+}
+
+
 const searchForLastMessage = async (guildId, channelId, command) => {
     const link = `https://discord.com/api/v9/guilds/${guildId}/messages/search?author_id=${client.user.id}&channel_id=${channelId}&content=${command}`;
 
@@ -42,14 +51,14 @@ const config = {
             interval: 24 * 3600,
         },
     ],
-    /*"815342964716470322": [
+    "815342964716470322": [
         {
             channel: "815342964716470325",
             command: "test",
-            enabled: false,
-            interval: 360,
+            enabled: true,
+            interval: 3600,
         },
-    ],*/
+    ],
 };
 
 const claimDailies = async () => {
@@ -73,6 +82,7 @@ const claimDailies = async () => {
                             command.interval
                         ) {
                             await channel.send(command.command);
+                            await alert({serverId, command})
                             await sleep(1.5 * 1000);
                         } else {
                             console.log(
