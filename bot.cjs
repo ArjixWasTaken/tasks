@@ -18,10 +18,12 @@ const searchForLastMessage = async (guildId, channelId, command) => {
             },
         })
     ).json();
+
     try {
-        return new Date(response.messages[0]?.[0]?.timestamp).getTime() / 1000;
+        const message = response.messages.find((res) => res[0].content == command)
+        return new Date(message?.[0]?.timestamp).getTime() / 1000;
     } catch {
-        return Date.now() / 1000 - 360 * 24;
+        return Date.now() / 1000 - 3600 * 24;
     }
 };
 
