@@ -19,7 +19,6 @@ const alert = async (command) => {
 
 const searchForLastMessage = async (guildId, channelId, command) => {
     const link = `https://discord.com/api/v9/guilds/${guildId}/messages/search?author_id=${client.user.id}&channel_id=${channelId}&content=${command}`;
-
     const response = await (
         await fetch(link, {
             headers: {
