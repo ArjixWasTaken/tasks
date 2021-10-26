@@ -24,4 +24,5 @@ jobs:
       run: node bot.cjs
       env: 
         DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
+        OWNER_ID: ${{ secrets.OWNER_ID }}
 
