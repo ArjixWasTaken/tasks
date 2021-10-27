@@ -8,6 +8,28 @@ const sleep = (milliseconds) =>
     new Promise((resolve) => setTimeout(resolve, milliseconds));
 
 
+const formatSecondsToETA = (seconds) => {
+    const day = 86400;
+    const hour = 3600;
+    const minute = 60;
+
+    const days = Math.floor(seconds / day);
+    const hours = Math.floor((seconds - days * day)/hour);
+    const minutes = Math.floor((seconds - days * day - hours * hour)/minute);
+    const remainingSeconds = seconds - days * day - hours * hour - minutes * minute;
+
+    const strings = [
+        days != 0 ? days + " Days" : "",
+        hours != 0 ? hours + " Hours" : "",
+        minutes != 0 ? minutes + " Minutes" : "",
+        remainingSeconds != 0 ? remainingSeconds + " Seconds" : ""
+    ].filter((i) => i != "")
+
+    return strings.join(" and ")
+}
+
+
+
 var owner = null
 const alertOwner = async (command) => {
     if (owner == null) {
@@ -85,8 +107,7 @@ const claimDailies = async () => {
                         } else {
                             console.log(
                                 command.command,
-                                command.interval -
-                                    (Date.now() / 1000 - lastTimestamp)
+                                formatSecondsToETA(command.interval - (Date.now() / 1000 - lastTimestamp))
                             );
                         }
                     }
