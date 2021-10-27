@@ -84,6 +84,7 @@ const claimDailies = async () => {
                             await sleep(1.5 * 1000);
                         } else {
                             console.log(
+                                command.command,
                                 command.interval -
                                     (Date.now() / 1000 - lastTimestamp)
                             );
