@@ -70,15 +70,7 @@ const config = {
             enabled: true,
             interval: 24 * 3600,
         },
-    ],
-    "815342964716470322": [
-        {
-            channel: "815342964716470325",
-            command: "test",
-            enabled: false,
-            interval: 3600,
-        },
-    ],
+    ]
 };
 
 const claimDailies = async () => {
