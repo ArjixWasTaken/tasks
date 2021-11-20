@@ -67,7 +67,7 @@ const config = {
         {
             channel: "664718764587089931",
             command: ";daily",
-            enabled: true,
+            enabled: false,
             interval: 24 * 3600,
         },
     ]
