@@ -7,7 +7,6 @@ const token = process.env.DISCORD_TOKEN;
 const sleep = (milliseconds) =>
     new Promise((resolve) => setTimeout(resolve, milliseconds));
 
-
 const formatSecondsToETA = (seconds) => {
     const day = 86400;
     const hour = 3600;
@@ -27,8 +26,6 @@ const formatSecondsToETA = (seconds) => {
 
     return strings.join(" and ")
 }
-
-
 
 var owner = null
 const alertOwner = async (command) => {
